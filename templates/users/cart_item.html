@@ -1,0 +1,60 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    <div class="container-fluid"><br>
+        <div class="row">
+            <div class="col s12 m6 l3">
+            <ul class="collection with-header">
+                <li class="collection-item"><div>Cart Items<a href="{% url 'order_summary' %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                <li class="collection-item"><div>My Order<a href="{% url 'myorder' %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                <li class="collection-item"><div>Profile <a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                <li class="collection-item"><div>Logout<a href="{% url 'logout' %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+            </ul>
+
+                <div class="card" style="background-color:gray">
+                     <div class="card-content center">
+                        <b><p style="color:ghostwhite">Your Total Amount : <b>{{ order.get_total_price }}</b></p></b><div class="card-action">
+                         <div class="row">
+                             <div class="col s12 m12  l5 left">
+                                <a href="{% url 'checkout' %}" class="btn green">Checkout</a>
+                             </div>
+                             <div class="col s12 m12  l5 right ">
+                              <a href="{% url 'home' %}" class="btn red">Contiue</a>
+                             </div>
+                         </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+                <div class=" col s12 m6 l7">
+                        <div class="row">
+                          <div class="col s12 m12 l12">
+                              {% for x in order.items.all %}
+                                  <div class="card">
+                                    <div class="card-panel">
+                                            <div class="row">
+                                                <div class="col m12 s12 l6">
+                                                   <img src="{{ x.sweet_id.sweet_image.url }}" alt="" class="center">
+                                                </div>
+                                                <div class="col m12 s12 l6 right">
+                                                    <p>Title : {{ x.sweet_id.title }}</p>
+                                                    <p>price : {{ x.sweet_id.price }} /kg</p>
+                                                     <p>Total Price : {{ x.total_price }}</p>
+                                                     <p>Quntity :{{ x.qty }} kg
+                                                         <span>
+                                                             <a href="{% url 'add_to_cart' x.sweet_id.sweet_id %}" class="btn green" style="border-radius:100px";>+</a>
+                                                             <a href="{% url 'removeformtocart' x.sweet_id.sweet_id %}" class="btn red" style="border-radius:100px";>-</a>
+                                                        </span>
+                                                     </p>
+                                                 </div>
+                                            </div>
+                                        </div>
+                                     </div>
+                              {% endfor %}
+                          </div>
+                        </div>
+                 </div>
+            </div>
+        </div>
+{% endblock %}
+

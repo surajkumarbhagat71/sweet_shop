@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper" >
+        <a href="{% url 'home' %}" class="brand-logo" style="margin-left:60px"><b>Online Sweet Shop</b></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          {% if 'login' not in request.session  %}
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'user_registations' %}">User Register</a></li>
+              <li><a href="{% url 'login' %}">User Login</a></li>
+              <li><a href="{% url 'owner_login' %}">Admin Login</a></li>
+          {% else %}
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'order_summary' %}">Cart</a></li>
+              <li><a href={% url 'logout' %}>Logout</a></li>
+          {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+{% block content %}
+
+{% endblock %}
+
+</body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+        $('.carousel').carousel();
+      });
+    </script>
+
+</html>

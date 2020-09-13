@@ -1,0 +1,35 @@
+{% extends 'owner/base.html' %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col s12 m12 l3">
+                <ul class="collection with-header">
+                    <li class="collection-item"><div>Dashaboard<a href="{% url 'dashaboard' %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                    <li class="collection-item"><div>Add sweet<a href="{% url 'addsweet' %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                    <li class="collection-item"><div>All Sweet <a href="{% url 'allsweet' %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                    <li class="collection-item"><div>Logout<a href="{% url 'admin_logout' %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                </ul>
+            </div>
+            <div class="col s12 m12 l8">
+                <div class="card">
+                    <div class="card-panel">
+                        <table>
+                            <tr>
+                                <th>Id</th>
+                                <th>Image</th>
+                                <th>Price</th>
+                                <th>User Name</th>
+                                <th>Contact</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

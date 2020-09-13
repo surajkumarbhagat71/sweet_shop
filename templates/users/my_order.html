@@ -1,0 +1,45 @@
+{% extends 'users/base.html' %}
+
+
+{% block content %}
+    <div class="container-fluid">
+<div class="row">
+    <div class="col s12 m6 l3"><br>
+            <ul class="collection with-header">
+                <li class="collection-item"><div>Cart Items<a href="{% url 'order_summary' %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                <li class="collection-item"><div>My Order<a href="{% url 'myorder' %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                <li class="collection-item"><div>Profile <a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                <li class="collection-item"><div>Logout<a href="{% url 'logout' %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+            </ul>
+    </div>
+
+    <div class=" col s12 m6 l7"><br>
+        <div class="row">
+  <div class="col s12 m12 l12">
+          {% for x in myorder %}
+          {% for foo in x.items.all %}
+              <div class="card">
+                <div class="card-panel">
+                <div class="row">
+                    <div class="col m12 s12 l6">
+                       <img src="{{ foo.sweet_id.sweet_image.url }}" alt="" class="center">
+                     </div>
+
+                    <div class="col m12 s12 l6 right">
+                        <p>Title : {{ foo.sweet_id.title }}</p>
+                        <p>price : {{ foo.sweet_id.price }} /kg</p>
+                         <p>Total Price : {{ foo.total_price }}</p>
+                         <p>Quntity :{{ foo.qty }} kg</p>
+                     </div>
+                </div>
+               </div>
+              </div>
+      {% endfor %}
+      {% endfor %}
+  </div>
+</div>
+    </div>
+</div>
+    </div>
+{% endblock %}
+

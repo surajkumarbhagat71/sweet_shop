@@ -1,0 +1,41 @@
+{% extends 'owner/base.html' %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col s12 m12 l3">
+                <ul class="collection with-header">
+                    <li class="collection-item"><div>Dashaboard<a href="{% url 'dashaboard' %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                    <li class="collection-item"><div>Add sweet<a href="{% url 'addsweet' %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                    <li class="collection-item"><div>All Sweet <a href="{% url 'allsweet' %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                    <li class="collection-item"><div>Logout<a href="{% url 'admin_logout' %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                </ul>
+            </div>
+            <div class="col s12 m12 l8">
+                <div class="card">
+                    <div class="card-panel">
+                        <table>
+                            <tr>
+                                <th>Id</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                            {% for foo in allsweet %}
+                                <tr>
+                                    <td>{{ foo.sweet_id}}</td>
+                                    <td><img src="{{ foo.sweet_image.url}}" style="height:100px; width:150px;border-radius:30px"></td><td>{{ foo.title }}</td>
+                                    <td>{{ foo.price }}</td>
+                                    <td><a href="" class="btn red">Delete</a></td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
